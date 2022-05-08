@@ -1,0 +1,48 @@
+.headerComponent {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    
+    &-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $gap;
+        background-color: rgba($white, .8);
+        @media screen and (min-width: $screen-sm){
+            padding: $gap $gap*2;
+        }
+        &_logo{
+
+            a{
+                font-family: $title-font;
+                font-weight: $bold;
+                font-size: rem-calc(18px);
+                margin: 0;
+                color: $black;
+                text-decoration: none;
+                @media screen and (min-width: $screen-sm){
+                    font-size: $gap*2;
+                }
+            }
+        }
+        &_menu{
+            a{
+                color: $black;
+                text-decoration: none;
+                font-weight: $medium;
+                &:not(:first-of-type){
+                    margin-left: $gap;
+                }
+                svg{
+                    margin-right: calc($half-gap/2);
+                }
+            }
+        }
+    }
+    .notLoggedError{
+        margin:0;
+    }
+}

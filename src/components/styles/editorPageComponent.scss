@@ -1,0 +1,181 @@
+.EditorPage{
+    margin-top: rem-calc(71px);
+    padding-bottom: $gap*4;
+    &-title{
+        text-align: center;
+        p{
+            margin-top: $gap;
+        }
+    }
+    &-body{
+        display: flex;
+        flex-direction: column;
+        margin-top: $gap*4;
+        min-height: rem-calc(500px);
+        position: relative;
+        @media screen and (max-width: $screen-sm-max){
+            margin-left: -$half-gap*3;
+            margin-right: -$half-gap*3;
+        }
+        @media screen and (min-width: $screen-sm){
+            flex-direction: row;
+        }
+        &_menuButton{
+            width: rem-calc(27px);
+            margin-left: auto;
+            margin-right: $half-gap*3;
+            margin-bottom: $gap;
+            @media screen and (min-width: $screen-sm){
+                display: none;
+            }
+            &:before, &:after, .burger {
+                content: "";
+                background: $black;
+                display: block;
+                height: rem-calc(3px);
+                border-radius: rem-calc(3px);
+                margin: rem-calc(4px) 0;
+                @include transition();
+            }
+            &.active{
+                &:before{
+                    @include transform(translateY(7px) rotate(135deg));
+                }
+                &:after{
+                    @include transform(translateY(-7px) rotate(-135deg));
+                }
+                .burger{
+                    @include transform(scale(0));
+                }
+            }
+        }
+        &_menu{
+            display: flex;
+            flex-direction: column;
+            background-color: $black;
+            min-width: rem-calc(200px);
+            @include transition();
+            @media screen and (max-width: $screen-sm-max){
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: rem-calc(40px);
+                left: -100%;
+                z-index: 10;
+            }
+            &.menuOpen{
+                left: 0;
+            }
+
+            &-category{
+                color: $white;
+                text-decoration: none;
+                padding: $gap $gap*2;
+                border-bottom: 1px solid $white;
+                @include transition();
+                &.active, &:hover{
+                    background: rgba($white, .4);
+                }
+            }
+        }
+        &_details{
+            flex: 1;
+            padding: 0 $half-gap*3;
+            &-wrapper{
+                position: relative;
+                overflow: hidden;
+                &:not(:first-of-type){
+                    margin-top: $gap;
+                }
+                .detail-editor-row{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    min-width: 100%;
+                    gap: $gap;
+                    background-color: #c4ebc6;
+                    border: 1px solid #92b694;
+                    border-radius: rem-calc(4px);
+                    padding: $gap;
+                    position: absolute;
+                    top: 0;
+                    left: 100%;
+                    @include transition();
+                    @media screen and (min-width: $screen-sm){
+                        flex-direction: row;
+                    }
+                    &_dateWrapper{
+                        display: flex;
+                        flex: 1;
+                        gap: $gap;
+                    }
+                    .inputContainer{
+                        padding: 0;
+                        &:not(.success, .error){
+                            input{
+                                &:not(:placeholder-shown, :disabled, :focus, :focus-within){
+                                    ~label{
+                                        background: linear-gradient(#c4ebc6 20%, rgb(255, 255, 255) 70%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .save{
+                        cursor: pointer;
+                    }
+                }
+                .detail-info-row{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    gap: $gap;
+                    background-color: #f1f1f1;
+                    border: 1px solid #d8d8d8;
+                    border-radius: 4px;
+                    padding: $gap;
+                    height: rem-calc(233px);
+                    @media screen and (min-width: $screen-sm){
+                        flex-direction: row;
+                        height: rem-calc(78px);
+                        justify-content: space-between;
+                    }
+                    .date{
+                        display: flex;
+                        flex: 1;
+                    }
+                    .role{
+                        flex: 1;
+                    }
+                    .company{
+                        flex: 1;
+                    }
+                    .actionsWrapper{
+                        display: flex;
+                        column-gap: $gap;
+                        @media screen and (min-width: $screen-sm){
+                            flex-direction: column;
+                        }
+                        .edit{
+                            cursor:pointer;
+                        }
+                        .addNew{
+                            cursor: pointer;
+                        }
+                    }
+                    .addNew{
+                        cursor: pointer;
+                        color: #92b694;
+                    }
+                }
+                &.editMode{
+                    .detail-editor-row{
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

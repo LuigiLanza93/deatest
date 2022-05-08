@@ -1,0 +1,108 @@
+.HomeCurriculum{
+    &_visual{
+        width: 100%;
+        height: 100vh;
+        background: url(../../assets/visual.jpg) no-repeat 70%;
+        background-size: cover;
+        position: relative;
+        padding: 0 $gap;
+        @media screen and (min-width: $screen-sm){
+            background-position: left;
+        }
+        &:before{
+            content: '';
+            position: absolute;
+            background-color: rgba($black, 0.5);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+        }
+        &-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+            padding-bottom: $gap*3;
+            @media screen and (min-width: $screen-sm){
+                justify-content: center;
+                width: 50%;
+                padding-bottom: 0;
+            }
+            h1{
+                color: $white;
+                text-align: right;
+                font-size: 50px;
+                text-transform: uppercase;
+                font-weight: 800;
+                @media screen and (min-width: $screen-sm){
+                    font-size: 90px;
+                }
+            }
+            a{
+                color: $white;
+                margin-top: $gap;
+                font-size: rem-calc(19px);
+                text-decoration: none;
+                position: relative;
+                overflow: hidden;
+                svg{
+                    position: relative;
+                    bottom: 20px;
+                    opacity: 0;
+                    @include transition();
+                }
+                &:hover{
+                    svg{
+                        bottom: 0;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &_body{
+        &-title{
+            text-align: center;
+            h2{
+
+            }
+            p{
+                margin-top: $gap;
+            }
+        }
+        &-wrapper{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: $gap 0 0;
+            @media screen and (min-width: $screen-md){
+                flex-direction: row;
+                padding: $gap*2 0 0;
+            }
+            &_column{
+                flex: 1;
+                h2{
+                    margin: $gap*2 0;
+                }
+                &__row{
+                    .duration{
+                        margin-top: $gap*2;
+                    }
+                    .title{
+                        margin-top: $half-gap;
+                    }
+                    .description{
+                        margin-top: calc($half-gap/2);
+                    }
+                }
+            }
+        }
+    }
+
+}

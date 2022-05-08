@@ -1,0 +1,41 @@
+.ContactForm{
+    &-title{
+        text-align: center;
+        h2{
+
+        }
+        p{
+            margin-top: $gap;
+            a{
+                color: $black;
+            }
+        }
+    }
+    form{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        column-gap: $half-gap*3;
+        row-gap: 0;
+        padding-top: $gap*2;
+        @media screen and (min-width: $screen-md){
+            padding: $half-gap 0;
+        }
+        @media screen and (min-width: $screen-lg){
+            padding: $half-gap*5 0 $half-gap*3;
+        }
+        .formTopWrapper{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            column-gap: $gap;
+            @media screen and (min-width: $screen-sm){
+                flex-direction: row;
+            }
+            &:first-of-type{
+                margin-top: $gap*2;
+            }
+        }
+    }
+}

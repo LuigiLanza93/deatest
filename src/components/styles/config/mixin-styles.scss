@@ -1,0 +1,38 @@
+// Transitions
+@mixin transition($property:null, $duration:null) {
+	@if $property {
+		transition-property: append($property, null, $separator: comma);
+	}
+
+	@else {
+		transition-property: all;
+	}
+
+	@if $duration {
+		transition-duration: $duration;
+	}
+
+	@else {
+		transition-duration: $pace;
+	}
+
+	transition-timing-function: ease,
+}
+
+// Border Radius
+@mixin border-radius($radius) {
+	@if unit($radius)=='px' {
+		border-radius: rem-calc($radius);
+	}
+
+	@if unit($radius)=='rem' {
+		border-radius: $radius;
+	}
+}
+
+//Transform
+@mixin transform($transformProp) {
+	-webkit-transform: $transformProp;
+	-moz-transform: $transformProp;
+	transform: $transformProp;
+}

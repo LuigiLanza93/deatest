@@ -1,0 +1,84 @@
+.login-wrapper{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    @include transition();
+    &:before{
+        content: '';
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(#0c0945, .3);
+    }
+    .LoginModal{
+        position: relative;
+        z-index: 2;
+        max-width: rem-calc(600px);
+        width: 100%;
+        max-height: rem-calc(400px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: $gap;
+        background-color: #efefef;
+        @include border-radius($half-gap);
+        @include transform(scale(.7));
+        @include transition();
+        .closeIcon{
+            position: absolute;
+            right: $gap*2;
+            top: $gap*2;
+            cursor: pointer;
+            svg{
+                width: $half-gap*3;
+                height: $half-gap*3;
+            }
+        }
+        &-wrap{
+            padding-top: $gap;
+            form{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                .inputContainer{
+                    padding-bottom: $gap;
+                    input{
+                        &:not(.success, .error){
+                            input{
+                                &:not(:placeholder-shown, :disabled, :focus, :focus-within){
+                                    ~label{
+                                        background: linear-gradient(#efefef 60%, rgba(255, 255, 255, 0) 100%);
+                                    }
+                                }
+                            }
+                        }
+                        &:focus{
+                            ~label{
+                                background: linear-gradient(#efefef 60%, rgba(255, 255, 255, 0) 100%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.openModal{
+        opacity: 1;
+        visibility: visible;
+        .LoginModal{
+            @include transform(scale(1));
+        }
+    }
+}

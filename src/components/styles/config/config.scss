@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+// units
+$u: 16px !default;
+$gap: rem-calc($u);
+$half-gap: calc($gap/2);
+$quarter-gap: calc($gap/4);
+$quaver-gap: calc($gap/8);
+
+// viewport
+$xs: 320px; // smartphone
+$sm: 456px; // tablet portrait
+$md: 769px; // tablet landscape
+$lg: 1025px; // desktop
+$xl: 1281px; 
+
+// media queries
+$screen-xxs-max: rem-calc($xs - 1);
+$screen-xs-max: rem-calc($sm - 1);
+$screen-sm: rem-calc($sm);
+$screen-sm-max: rem-calc($md - 1);
+$screen-md: rem-calc($md);
+$screen-md-max: rem-calc($lg - 1);
+$screen-lg: rem-calc($lg);
+$screen-lg-max: rem-calc($xl - 1);
+$screen-xl: rem-calc($xl);
+
+// widths
+$body-min-width: rem-calc($xs);
+$container-max-width: rem-calc($xl);
+$section-max-width: rem-calc(1920px);
+$header-height: rem-calc(75px);
+
+// typography
+$title-font: 'Montserrat', sans-serif;
+$body-font: 'Lato', sans-serif;;
+$regular: 400;
+$medium: 600;
+$bold: 800;
+$kern: rem-calc(1px);
+
+// transtions
+$fast: .2s;
+$pace: .4s;
+$slow: 1.2s;
+
+//colors
+$white: white;
+$black: #4d4d4d;
+$cta-diabled-bg: #bdbdbd;
+$cta-diabled-color: $black;

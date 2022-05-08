@@ -1,0 +1,8 @@
+@function strip-unit($val){
+	@return calc($val / ($val * 0 + 1));
+}
+
+@function rem-calc($px){
+	$rem: calc($px / $u);
+	@return strip-unit($rem) * 1rem;
+}

@@ -1,0 +1,206 @@
+html {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: $u;
+	color: $black;
+	background-color: $white;
+
+	body {
+		display: block;
+		position: relative;
+		z-index: 0;
+		margin: 0;
+		padding: 0;
+		min-width: $body-min-width;
+		background-color: $white;
+		font-family: $body-font;
+		font-size: $gap;
+
+		* {
+			box-sizing: border-box;
+			outline: none;
+
+			&[tooltip] {
+				cursor: pointer;
+			}
+		}
+		h1, h2, h3, h4, h5, h6{
+			font-family: $title-font;
+			font-weight: $medium;
+			margin: 0;
+		}
+		h2{
+			font-size: rem-calc(27px);
+			line-height: 1.2;
+			@media screen and (min-width: $screen-md){
+				font-size: $gap*2;
+			}
+		}
+		h3{
+			font-size: rem-calc(19px);
+			line-height: 1.2;
+		}
+		h4{
+			font-size: rem-calc(14px);
+			line-height: 1.2;
+		}
+		p, a{
+			margin: 0;
+		}
+		img{
+			width: 100%;
+		}
+		.cta{
+			background-color: $black;
+			color: $white;
+			border: none;
+			padding: $gap $gap*3;
+			font-size: $gap;
+			cursor: pointer;
+			@include transition();
+			@include border-radius($half-gap);
+			&.disabled, &:disabled{
+				background-color: $cta-diabled-bg;
+				color: $cta-diabled-color;
+				cursor: not-allowed;
+			}
+		}
+
+
+        .inputContainer{
+            position: relative;
+            flex: 1;
+            width: 100%;
+            padding-bottom: $gap*2;
+            &:not(.success, .error){
+                outline: #4d4d4d;
+                border-color: #4d4d4d;
+                color: #4d4d4d;
+                input{
+                    &:not(:placeholder-shown, :disabled, :focus, :focus-within){
+                        &~label{
+                            color:#4d4d4d;
+                            background: $white;
+                        }
+                    }
+                }
+            }
+            &:focus-within{
+                .suggestionsList{
+                    display: block;
+                }
+            }
+            &.error{
+                input, textarea{
+                    border-color: #c4001d !important;
+                    &:hover{
+                        border-color: #c4001d !important;
+                    }
+                    &:focus{
+                        ~label{
+                            color: #c4001d !important;
+                        }
+                    }
+                }
+                label, span{
+                    color: #c4001d;
+                }
+            }
+            input, textarea{
+                font-size: rem-calc(18px);
+                border: 1px solid #4d4d4d;
+                width: 100%;
+                height: rem-calc(44px);
+                line-height: rem-calc(22px);
+                color: #4d4d4d;
+                margin: re-calc(10px) 0px rem-calc(9px);
+                padding: 0px 0px 0px $gap;
+                @include transition(border .2s);
+                @include border-radius(calc($half-gap/2));
+                &:hover{
+                    &:not(:focus){
+                        border-color: #000fbe;
+                    }
+                }
+                &:focus{
+                    outline: rgba(0, 160, 255, 0.5);
+                    border: rem-calc(3px) solid rgba(0, 160, 255, 0.5);
+                }
+                &:not(:placeholder-shown, :disabled, :focus, :focus-within){
+                    outline: #4d4d4d;
+                    border-color: #4d4d4d;
+                    color: #4d4d4d;
+                }
+                &:not(:placeholder-shown), &:focus{
+                    &~label{
+                        top: rem-calc(-6px);
+                        font-size: rem-calc(14px);
+                        line-height: rem-calc(15px);
+                    }
+                }
+                &:focus{
+                    &~label{
+                        color: rgba(0, 160, 255, 0.5);
+                    }
+                }
+            }
+            textarea{
+                font-family: $body-font;
+                height: rem-calc(200px);
+                padding: $gap;
+            }
+            label{
+                position: absolute;
+                padding: 0px rem-calc(3px);
+                top: rem-calc(11px);
+                left: $gap;
+                font-size: rem-calc(18px);
+                line-height: rem-calc(22px);
+                background: transparent;
+                cursor: text;
+                color: #4d4d4d;
+                background: linear-gradient($white 60%, rgba(255, 255, 255, 0) 100%);
+                pointer-events: none;
+                @include transition(all .2s);
+            }
+        }
+
+        .successResult{
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
+            padding: 1rem 0.5rem;
+            background-color: #93f993;
+            color: #007119;
+        }
+        .errorResult, .notLoggedError{
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
+            padding: 1rem 0.5rem;
+            background-color: #f99393;
+            color: #710000;
+        }
+
+		section{
+			max-width: $section-max-width;
+			margin: 0 auto;
+			&:not(:first-of-type){
+				padding: $gap*3 $gap;
+			}
+			.container {
+				position: relative;
+				width: 100%;
+				max-width: $container-max-width;
+				margin: 0 auto;
+				padding: 0 $half-gap*3;
+	
+				@media screen and (min-width: $screen-sm) {
+					padding: 0 $gap*2;
+				}
+			}
+		}
+	}
+}
